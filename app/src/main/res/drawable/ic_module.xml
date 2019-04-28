@@ -1,0 +1,29 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="128dp"
+    android:height="128dp"
+    android:viewportWidth="128"
+    android:viewportHeight="128">
+
+    <group android:name="group">
+
+        <path
+            android:name="lt"
+            android:fillColor="@android:color/darker_gray"
+            android:pathData="M10 10 H59 V59 H10" />
+        <path
+            android:name="rt"
+            android:fillColor="@android:color/holo_blue_bright"
+            android:pathData="M69 10 H118 V59 H69" />
+
+        <path
+            android:name="lb"
+            android:fillColor="@android:color/holo_orange_dark"
+            android:pathData="M10 69 H59 V118 H10" />
+
+        <path
+            android:name="rb"
+            android:fillColor="@android:color/holo_purple"
+            android:pathData="M69 69 H118 V118 H69" />
+    </group>
+
+</vector>

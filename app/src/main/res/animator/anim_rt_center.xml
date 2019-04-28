@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="1000"
+    android:propertyName="pathData"
+    android:valueType="pathType"
+    android:interpolator="@android:anim/anticipate_overshoot_interpolator"
+    android:valueFrom="M69 10 H118 V59 H69"
+    android:valueTo="M39 39 H88.5 V88.5 H39" />

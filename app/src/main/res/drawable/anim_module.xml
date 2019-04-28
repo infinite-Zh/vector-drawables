@@ -1,0 +1,18 @@
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:drawable="@drawable/ic_module"
+    tools:ignore="NewApi">
+    <target
+        android:animation="@animator/anim_lt_center"
+        android:name="lt"/>
+    <target
+        android:animation="@animator/anim_rt_center"
+        android:name="rt"/>
+    <target
+        android:animation="@animator/anim_lb_center"
+        android:name="lb"/>
+    <target
+        android:animation="@animator/anim_rb_center"
+        android:name="rb"/>
+
+</animated-vector>
