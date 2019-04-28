@@ -56,12 +56,12 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSuccessEnd() {
-                Log.d("IAnimationCallback","onSuccessEnd");
+                Log.d("IAnimationCallback", "onSuccessEnd");
             }
 
             @Override
             public void onFailEnd() {
-                Log.d("IAnimationCallback","onFailEnd");
+                Log.d("IAnimationCallback", "onFailEnd");
 
             }
         });
@@ -70,9 +70,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        ((AnimatedVectorDrawableCompat) iv1.getDrawable()).start();
-        ((AnimatedVectorDrawableCompat) iv2.getDrawable()).start();
-        ((AnimatedVectorDrawableCompat) iv3.getDrawable()).start();
+//        ((AnimatedVectorDrawableCompat) iv1.getDrawable()).start();
+//        ((AnimatedVectorDrawableCompat) iv2.getDrawable()).start();
+//        ((AnimatedVectorDrawableCompat) iv3.getDrawable()).start();
 //        ((AnimatedVectorDrawableCompat) iv4.getDrawable()).start();
     }
 }

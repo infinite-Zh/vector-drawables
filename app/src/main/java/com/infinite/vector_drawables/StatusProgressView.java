@@ -10,7 +10,7 @@ import androidx.vectordrawable.graphics.drawable.Animatable2Compat;
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 
 /**
- * @author kfzhangxu
+ * @author bug小能手
  * Created on 2019/4/28.
  */
 public class StatusProgressView extends AppCompatImageView {
@@ -18,7 +18,7 @@ public class StatusProgressView extends AppCompatImageView {
         PROGRESS, SUCCESS, FAIL
     }
 
-    private AnimatedVectorDrawableCompat mProgressDrawable, mSuccessCircleDrawable, mSuccessCheckDrawable, mFailDrawable;
+    private AnimatedVectorDrawableCompat mProgressDrawable, mSuccessCircleDrawable,mFailCircleDrawable, mSuccessCheckDrawable, mFailDrawable;
     private State mState;
     private IAnimationCallback mCallback;
 
@@ -44,6 +44,7 @@ public class StatusProgressView extends AppCompatImageView {
         mProgressDrawable = AnimatedVectorDrawableCompat.create(context, R.drawable.anim_status_in_progress);
         mProgressDrawable = AnimatedVectorDrawableCompat.create(context, R.drawable.anim_status_in_progress);
         mSuccessCircleDrawable = AnimatedVectorDrawableCompat.create(context, R.drawable.ic_status_success_circle);
+        mFailCircleDrawable = AnimatedVectorDrawableCompat.create(context, R.drawable.ic_status_success_circle);
         mSuccessCheckDrawable = AnimatedVectorDrawableCompat.create(context, R.drawable.ic_status_success_check);
         mFailDrawable = AnimatedVectorDrawableCompat.create(context, R.drawable.ic_status_fail);
         progress();
@@ -62,6 +63,8 @@ public class StatusProgressView extends AppCompatImageView {
         if (mState == State.SUCCESS) {
             return;
         }
+        mFailCircleDrawable.stop();
+        mFailDrawable.stop();
         mState = State.SUCCESS;
         refresh();
     }
@@ -70,6 +73,8 @@ public class StatusProgressView extends AppCompatImageView {
         if (mState == State.FAIL) {
             return;
         }
+        mSuccessCircleDrawable.stop();
+        mSuccessCheckDrawable.stop();
         mState = State.FAIL;
         refresh();
     }
@@ -98,13 +103,14 @@ public class StatusProgressView extends AppCompatImageView {
                         setImageDrawable(mSuccessCheckDrawable);
                         mSuccessCheckDrawable.start();
                         mSuccessCheckDrawable.registerAnimationCallback(successCallback);
+                        mSuccessCircleDrawable.unregisterAnimationCallback(this);
                     }
                 });
                 break;
             case FAIL:
                 mProgressDrawable.stop();
-                setImageDrawable(mSuccessCircleDrawable);
-                mSuccessCircleDrawable.registerAnimationCallback(new Animatable2Compat.AnimationCallback() {
+                setImageDrawable(mFailCircleDrawable);
+                mFailCircleDrawable.registerAnimationCallback(new Animatable2Compat.AnimationCallback() {
                     @Override
                     public void onAnimationStart(Drawable drawable) {
                         super.onAnimationStart(drawable);
@@ -115,8 +121,8 @@ public class StatusProgressView extends AppCompatImageView {
                         super.onAnimationEnd(drawable);
                         setImageDrawable(mFailDrawable);
                         mFailDrawable.start();
-                        mSuccessCheckDrawable.registerAnimationCallback(failCallback);
-
+                        mFailCircleDrawable.registerAnimationCallback(failCallback);
+                        mFailCircleDrawable.unregisterAnimationCallback(this);
                     }
                 });
 
@@ -138,6 +144,7 @@ public class StatusProgressView extends AppCompatImageView {
             if (mCallback != null) {
                 mCallback.onSuccessEnd();
             }
+            mSuccessCheckDrawable.unregisterAnimationCallback(this);
         }
     };
     private Animatable2Compat.AnimationCallback failCallback = new Animatable2Compat.AnimationCallback() {
@@ -152,6 +159,8 @@ public class StatusProgressView extends AppCompatImageView {
             if (mCallback != null) {
                 mCallback.onFailEnd();
             }
+            mFailDrawable.unregisterAnimationCallback(this);
+
 
         }
     };
