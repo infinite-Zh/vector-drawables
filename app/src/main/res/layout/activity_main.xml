@@ -27,12 +27,33 @@
         android:layout_height="128dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv2"
-        app:srcCompat="@drawable/ic_status_success" />
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv4"
+        app:srcCompat="@drawable/ic_status_success_circle" />
+    <com.infinite.vector_drawables.StatusProgressView
+        android:id="@+id/statusView"
         android:layout_width="128dp"
         android:layout_height="128dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv3"
-        app:srcCompat="@drawable/ic_status_fail" />
+        app:layout_constraintTop_toBottomOf="@id/iv3" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnProgress"
+        android:text="progress"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSuccess"
+        android:text="success"
+        app:layout_constraintLeft_toRightOf="@id/btnProgress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnFail"
+        android:text="fail"
+        app:layout_constraintLeft_toRightOf="@id/btnSuccess"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </androidx.constraintlayout.widget.ConstraintLayout>
