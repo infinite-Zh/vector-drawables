@@ -21,5 +21,11 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv1"
         app:srcCompat="@drawable/anim_status_in_progress" />
-
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv3"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv2"
+        app:srcCompat="@drawable/ic_status_success" />
 </androidx.constraintlayout.widget.ConstraintLayout>

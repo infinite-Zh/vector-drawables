@@ -9,13 +9,14 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AppCompatImageView iv1,iv2;
+    private AppCompatImageView iv1,iv2,iv3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         iv1=findViewById(R.id.iv1);
         iv2=findViewById(R.id.iv2);
+        iv3=findViewById(R.id.iv3);
     }
 
     @Override
@@ -23,5 +24,6 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         ((AnimatedVectorDrawableCompat)iv1.getDrawable()).start();
         ((AnimatedVectorDrawableCompat)iv2.getDrawable()).start();
+        ((AnimatedVectorDrawableCompat)iv3.getDrawable()).start();
     }
 }
