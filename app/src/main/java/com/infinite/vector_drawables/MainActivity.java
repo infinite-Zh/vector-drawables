@@ -7,6 +7,7 @@ import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
@@ -43,6 +44,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 iv4.fail();
+
+            }
+        });
+
+        iv4.addCallback(new StatusProgressView.IAnimationCallback() {
+            @Override
+            public void onProgressStart() {
+
+            }
+
+            @Override
+            public void onSuccessEnd() {
+                Log.d("IAnimationCallback","onSuccessEnd");
+            }
+
+            @Override
+            public void onFailEnd() {
+                Log.d("IAnimationCallback","onFailEnd");
 
             }
         });

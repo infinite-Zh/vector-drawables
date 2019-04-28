@@ -152,7 +152,7 @@ public class StatusProgressView extends AppCompatImageView {
             if (mCallback != null) {
                 mCallback.onFailEnd();
             }
-            
+
         }
     };
 
