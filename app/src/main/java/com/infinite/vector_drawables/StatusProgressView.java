@@ -1,11 +1,14 @@
 package com.infinite.vector_drawables;
 
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.core.content.ContextCompat;
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat;
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 
@@ -21,20 +24,23 @@ public class StatusProgressView extends AppCompatImageView {
     private AnimatedVectorDrawableCompat mProgressDrawable, mSuccessCircleDrawable,mFailCircleDrawable, mSuccessCheckDrawable, mFailDrawable;
     private State mState;
     private IAnimationCallback mCallback;
+    private int mProgressColor,mSuccessColor,mFailColor;
 
     public StatusProgressView(Context context) {
-        super(context);
-        init(context);
+        this(context,null);
     }
 
     public StatusProgressView(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        init(context);
-
+        this(context, attrs,-1);
     }
 
     public StatusProgressView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        TypedArray ta=context.getTheme().obtainStyledAttributes(attrs, R.styleable.StatusProgressView, defStyleAttr, 0);
+        mSuccessColor=ta.getColor(R.styleable.StatusProgressView_successColor, ContextCompat.getColor(context, R.color.colorPrimary));
+        mProgressColor=ta.getColor(R.styleable.StatusProgressView_progressColor, ContextCompat.getColor(context, R.color.colorPrimary));
+        mFailColor=ta.getColor(R.styleable.StatusProgressView_failColor, ContextCompat.getColor(context, R.color.colorPrimary));
+        ta.recycle();
         init(context);
 
     }
@@ -47,6 +53,12 @@ public class StatusProgressView extends AppCompatImageView {
         mFailCircleDrawable = AnimatedVectorDrawableCompat.create(context, R.drawable.ic_status_success_circle);
         mSuccessCheckDrawable = AnimatedVectorDrawableCompat.create(context, R.drawable.ic_status_success_check);
         mFailDrawable = AnimatedVectorDrawableCompat.create(context, R.drawable.ic_status_fail);
+
+        mSuccessCircleDrawable.setColorFilter(mSuccessColor, PorterDuff.Mode.SRC_IN);
+        mSuccessCheckDrawable.setColorFilter(mSuccessColor, PorterDuff.Mode.SRC_IN);
+        mProgressDrawable.setColorFilter(mProgressColor, PorterDuff.Mode.SRC_IN);
+        mFailCircleDrawable.setColorFilter(mFailColor, PorterDuff.Mode.SRC_IN);
+        mFailDrawable.setColorFilter(mFailColor, PorterDuff.Mode.SRC_IN);
         progress();
         refresh();
     }

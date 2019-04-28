@@ -6,34 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/anim_module" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv2"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv1"
-        app:srcCompat="@drawable/anim_status_in_progress" />
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv3"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv2"
-        app:srcCompat="@drawable/ic_status_success_circle" />
     <com.infinite.vector_drawables.StatusProgressView
         android:id="@+id/statusView"
         android:layout_width="128dp"
         android:layout_height="128dp"
+        app:progressColor="@color/colorPrimaryDark"
+        app:successColor="@color/colorPrimary"
+        app:failColor="@color/colorAccent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv3" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnProgress"

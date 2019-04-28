@@ -20,9 +20,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        iv1 = findViewById(R.id.iv1);
-        iv2 = findViewById(R.id.iv2);
-        iv3 = findViewById(R.id.iv3);
         iv4 = findViewById(R.id.statusView);
         mProgress = findViewById(R.id.btnProgress);
         mSuccess = findViewById(R.id.btnSuccess);
