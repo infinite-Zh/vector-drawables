@@ -28,4 +28,11 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv2"
         app:srcCompat="@drawable/ic_status_success" />
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv4"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv3"
+        app:srcCompat="@drawable/ic_status_fail" />
 </androidx.constraintlayout.widget.ConstraintLayout>

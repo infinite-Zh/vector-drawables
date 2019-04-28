@@ -11,8 +11,8 @@
         android:strokeWidth="1"
         android:strokeColor="#6633ff" />
     <path
-        android:name="check"
-        android:pathData="M6 12 L12 18 L18 6"
+        android:name="cross"
+        android:pathData="M6 6 L18 18 M18 6 L6 18"
         android:strokeWidth="1"
         android:strokeColor="#6633ff" />
 </vector>

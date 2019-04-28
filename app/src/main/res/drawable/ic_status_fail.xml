@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/drawable_status_fail">
+    <target
+        android:name="progress"
+        android:animation="@animator/anim_status_success" />
+    <target
+        android:name="cross"
+        android:animation="@animator/anim_status_fail_cross" />
+</animated-vector>
