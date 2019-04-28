@@ -18,8 +18,9 @@ public class StatusProgressView extends AppCompatImageView {
         PROGRESS, SUCCESS, FAIL
     }
 
-    private AnimatedVectorDrawableCompat mProgressDrawable, mSuccessCircleDrawable, mSuccessCheckDrawable,mFailDrawable;
-    private State mState ;
+    private AnimatedVectorDrawableCompat mProgressDrawable, mSuccessCircleDrawable, mSuccessCheckDrawable, mFailDrawable;
+    private State mState;
+    private IAnimationCallback mCallback;
 
     public StatusProgressView(Context context) {
         super(context);
@@ -40,11 +41,11 @@ public class StatusProgressView extends AppCompatImageView {
 
     private void init(Context context) {
 
-        mProgressDrawable=AnimatedVectorDrawableCompat.create(context,R.drawable.anim_status_in_progress);
         mProgressDrawable = AnimatedVectorDrawableCompat.create(context, R.drawable.anim_status_in_progress);
-        mSuccessCircleDrawable = AnimatedVectorDrawableCompat.create( context,R.drawable.ic_status_success_circle);
-        mSuccessCheckDrawable = AnimatedVectorDrawableCompat.create( context,R.drawable.ic_status_success_check);
-        mFailDrawable = AnimatedVectorDrawableCompat.create( context,R.drawable.ic_status_fail);
+        mProgressDrawable = AnimatedVectorDrawableCompat.create(context, R.drawable.anim_status_in_progress);
+        mSuccessCircleDrawable = AnimatedVectorDrawableCompat.create(context, R.drawable.ic_status_success_circle);
+        mSuccessCheckDrawable = AnimatedVectorDrawableCompat.create(context, R.drawable.ic_status_success_check);
+        mFailDrawable = AnimatedVectorDrawableCompat.create(context, R.drawable.ic_status_fail);
         progress();
         refresh();
     }
@@ -73,6 +74,10 @@ public class StatusProgressView extends AppCompatImageView {
         refresh();
     }
 
+    public void addCallback(IAnimationCallback callback) {
+        mCallback = callback;
+    }
+
     private void refresh() {
         switch (mState) {
             case PROGRESS:
@@ -92,6 +97,7 @@ public class StatusProgressView extends AppCompatImageView {
                         super.onAnimationEnd(drawable);
                         setImageDrawable(mSuccessCheckDrawable);
                         mSuccessCheckDrawable.start();
+                        mSuccessCheckDrawable.registerAnimationCallback(successCallback);
                     }
                 });
                 break;
@@ -109,6 +115,8 @@ public class StatusProgressView extends AppCompatImageView {
                         super.onAnimationEnd(drawable);
                         setImageDrawable(mFailDrawable);
                         mFailDrawable.start();
+                        mSuccessCheckDrawable.registerAnimationCallback(failCallback);
+
                     }
                 });
 
@@ -117,4 +125,42 @@ public class StatusProgressView extends AppCompatImageView {
         ((AnimatedVectorDrawableCompat) getDrawable()).start();
     }
 
+    private Animatable2Compat.AnimationCallback successCallback = new Animatable2Compat.AnimationCallback() {
+        @Override
+        public void onAnimationStart(Drawable drawable) {
+            super.onAnimationStart(drawable);
+
+        }
+
+        @Override
+        public void onAnimationEnd(Drawable drawable) {
+            super.onAnimationEnd(drawable);
+            if (mCallback != null) {
+                mCallback.onSuccessEnd();
+            }
+        }
+    };
+    private Animatable2Compat.AnimationCallback failCallback = new Animatable2Compat.AnimationCallback() {
+        @Override
+        public void onAnimationStart(Drawable drawable) {
+            super.onAnimationStart(drawable);
+        }
+
+        @Override
+        public void onAnimationEnd(Drawable drawable) {
+            super.onAnimationEnd(drawable);
+            if (mCallback != null) {
+                mCallback.onFailEnd();
+            }
+            
+        }
+    };
+
+    public interface IAnimationCallback {
+        void onProgressStart();
+
+        void onSuccessEnd();
+
+        void onFailEnd();
+    }
 }
