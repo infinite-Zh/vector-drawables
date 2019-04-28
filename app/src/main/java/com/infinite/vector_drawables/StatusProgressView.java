@@ -79,6 +79,7 @@ public class StatusProgressView extends AppCompatImageView {
                 setImageDrawable(mProgressDrawable);
                 break;
             case SUCCESS:
+                mProgressDrawable.stop();
                 setImageDrawable(mSuccessCircleDrawable);
                 mSuccessCircleDrawable.registerAnimationCallback(new Animatable2Compat.AnimationCallback() {
                     @Override
@@ -95,6 +96,7 @@ public class StatusProgressView extends AppCompatImageView {
                 });
                 break;
             case FAIL:
+                mProgressDrawable.stop();
                 setImageDrawable(mSuccessCircleDrawable);
                 mSuccessCircleDrawable.registerAnimationCallback(new Animatable2Compat.AnimationCallback() {
                     @Override
