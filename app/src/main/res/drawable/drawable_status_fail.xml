@@ -12,7 +12,9 @@
         android:strokeColor="#6633ff" />
     <path
         android:name="cross"
-        android:pathData="M6 6 L18 18 M18 6 L6 18"
+        android:pathData="M6 6 L18 18 L12 12 L6 18 L18 6"
         android:strokeWidth="1"
-        android:strokeColor="#6633ff" />
+        android:strokeColor="#6633ff"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
 </vector>

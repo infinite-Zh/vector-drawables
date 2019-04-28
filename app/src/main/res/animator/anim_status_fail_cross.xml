@@ -4,5 +4,6 @@
     android:duration="2000"
     android:propertyName="trimPathEnd"
     android:valueFrom="0"
+    android:interpolator="@android:anim/accelerate_interpolator"
     android:valueTo="1"
     android:valueType="floatType" />
