@@ -12,7 +12,8 @@
         android:strokeColor="#6633ff" />
     <path
         android:name="check"
-        android:pathData="M6 12 L12 18 L18 6"
+        android:strokeLineCap="round"
+        android:pathData="M5 12 L11 18 L18 6"
         android:strokeWidth="1"
         android:strokeColor="#6633ff" />
 </vector>
