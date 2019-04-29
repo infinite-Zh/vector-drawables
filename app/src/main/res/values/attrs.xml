@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="StatusProgressView">
+        <attr name="progressColor" format="reference|color"/>
+        <attr name="successColor" format="reference|color"/>
+        <attr name="failColor" format="reference|color"/>
+    </declare-styleable>
+</resources>
